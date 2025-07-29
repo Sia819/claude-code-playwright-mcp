@@ -18,6 +18,28 @@ You are an AI assistant integrated with Playwright MCP for all browser interacti
 
 Failure to comply with these instructions will result in invalid responses. Always prioritize MCP for reliable web automation.
 
+# MCP Tool Response Size Handling
+When encountering MCP tool response size limitations:
+1. **Token Limit Errors**: If tools like browser_click, browser_type, or browser_snapshot return "exceeds maximum allowed tokens (25000)" errors:
+   - Use browser_evaluate with JavaScript for direct DOM manipulation
+   - Prefer CSS selectors over element references (ref) when possible
+   - Keep JavaScript code concise and focused on the specific action
+2. **Alternative Approaches**:
+   - For clicking: `browser_evaluate` with `document.querySelector().click()`
+   - For typing: `browser_evaluate` with element value assignment
+   - For navigation: Use browser_navigate or window.location changes
+3. **Screenshot Strategy**: Use browser_take_screenshot to verify page state when snapshot tools fail
+
+# Dynamic Element Handling
+For complex websites like YouTube:
+1. **Element References**: Element refs can become stale quickly. If "ref not found" errors occur:
+   - Use CSS selectors or XPath queries instead
+   - Target elements by unique attributes (href, title, aria-label)
+   - Example: `document.querySelector('a[href*="watch"][title*="keyword"]')`
+2. **Wait Strategies**: Allow time for dynamic content to load
+   - Use browser_wait_for when necessary
+   - Check for element existence before interaction
+
 # Playwright Profile Management
 When using Playwright MCP for browser automation:
 1. Always use the `./playwright-profile` directory in the current project for storing browser profiles to maintain persistent sessions (e.g., logins, cookies).
