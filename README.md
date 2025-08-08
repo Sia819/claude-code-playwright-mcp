@@ -1,14 +1,16 @@
 # claude-code-playwright-mcp
 When using Claude Code in a Windows environment to use browser automation, we encourage you to use Playwright MCP to leave a user profile so that you can load the profile without having to log in every time, and provide guidelines in CLAUDE.md to force you to use Playwright MCP for browser operations as much as possible.
 
-## How to setup Claude Code?
-> C:\Users\User\.claude.json
+## Project-Level MCP Configuration
+This project includes a `.mcp.json` file for project-specific MCP server configuration. This approach is preferred over global configuration as it:
+- Keeps MCP settings with the project
+- Makes the setup reproducible for other users
+- Avoids conflicts with other projects
 
-Claude Code Windows defaults to git bash in Terminal, so you need to set it to cmd to execute commands properly.
+The `.mcp.json` file in this project configures Playwright MCP with persistent browser profiles:
 
 ```json
 {
-  ...
   "mcpServers": {
     "playwright": {
       "command": "cmd",
@@ -20,10 +22,11 @@ Claude Code Windows defaults to git bash in Terminal, so you need to set it to c
         "--user-data-dir=./playwright-profile"
       ]
     }
-  },
-  ...
+  }
 }
 ```
+
+## How to use
 
 1. Open Visual Studio Code
 2. Ctrl + ` with open terminal

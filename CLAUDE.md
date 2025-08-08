@@ -48,7 +48,7 @@ When using Playwright MCP for browser automation:
 4. This ensures browser state persists between runs without relying on default Chrome profiles.
 
 # MCP Server Configuration
-Update the MCP server configuration in `~/.claude.json` (or project-specific .claude.json) to enable persistent profiles:
+This project includes a `.mcp.json` file that configures the Playwright MCP server with persistent browser profiles. The configuration is automatically loaded when Claude Code is run from this project directory:
 ```json
 {
   "mcpServers": {
@@ -66,7 +66,7 @@ Update the MCP server configuration in `~/.claude.json` (or project-specific .cl
 }
 ```
 
-IMPORTANT: After updating the configuration, restart Claude Code for changes to take effect.
+Note: The project-level `.mcp.json` file takes precedence over global settings and ensures consistent MCP configuration across all users of this project.
 
 Important Instruction Reminders
 Do what has been asked; nothing more, nothing less.

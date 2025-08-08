@@ -10,8 +10,17 @@
       "mcp__playwright__browser_snapshot",
       "mcp__playwright__browser_tab_list",
       "mcp__playwright__browser_tab_new",
-      "mcp__playwright__browser_tab_select"
+      "mcp__playwright__browser_tab_select",
+      "mcp__playwright__browser_navigate_back",
+      "mcp__playwright__browser_tab_close",
+      "Bash(start:*)",
+      "Bash(npm install)",
+      "Bash(npx playwright install:*)"
     ],
     "deny": []
-  }
+  },
+  "enabledMcpjsonServers": [
+    "playwright"
+  ],
+  "enableAllProjectMcpServers": true
 }
